@@ -8,41 +8,199 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
     />
+    <link rel="icon" type="image/png" href="./Assest/png.png">
     <link rel="stylesheet" href="./CSS/style.css" />
   </head>
   <body>
+    
     <nav>
       <div class="logo">
         <h3>V<span>E</span>ZZ<span>O</span></h3>
       </div>
 
       <ul class="nav-links">
-        <li><a href="#">Home</a></li>
-        <li><a href="#">Shop</a></li>
-        <li><a href="#">Categories</a></li>
-        <li><a href="#">Deals</a></li>
-        <li><a href="#">Contact</a></li>
+        <li><a href="./login.html">Home</a></li>
+        <li><a href="./login.html">Shop</a></li>
+        <li><a href="./login.html">Categories</a></li>
+        <li><a href="./login.html">Deals</a></li>
+        <li><a href="./login.html">Contact</a></li>
       </ul>
-
-      <div class="search-box">
-        <input type="text" placeholder="Search products..." />
-        <i class="fas fa-search"></i>
-      </div>
 
       <div class="nav-icons">
         <div class="icon">
-          <i class="far fa-heart"></i>
-          <!-- <span class="count">2</span> -->
+          <i class="far fa-heart" onclick="goProtected('wishlist.html')"></i>
         </div>
 
         <div class="icon">
-          <i class="fas fa-shopping-cart"></i>
-          <!-- <span class="count">3</span> -->
+          <i class="fas fa-shopping-cart" onclick="goProtected('cart.html')"></i>
+          <span class="count" id="cartCount">0</span>
         </div>
 
-        <a href="#" class="login-btn">Login</a>
+        <!-- LOGIN BUTTON -->
+        <a href="login.html" class="login-btn" id="loginBtn">Login</a>
+
+        <!-- USER ICON -->
+        <div class="user-icon" id="userAvatar" style="display:none;">
+          <i class="fas fa-user-circle"></i>
+        </div>
       </div>
     </nav>
+
+    <!-- SIDEBAR -->
+    <div class="sidebar" id="userSidebar">
+      <div class="sidebar-header">
+        <h3>My Account</h3>
+        <span onclick="closeSidebar()">&times;</span>
+      </div>
+
+      <div class="sidebar-user">
+        <i class="fas fa-user-circle"></i>
+        <h4 id="userName">User Name</h4>
+        <p id="userEmail">user@email.com</p>
+      </div>
+
+      <ul class="sidebar-links">
+        <li onclick="goProtected('wishlist.html')"><i class="far fa-heart"></i> Wishlist</li>
+        <li onclick="goProtected('cart.html')"><i class="fas fa-shopping-cart"></i> Cart</li>
+        <li onclick="goProtected('dashboard.html')"><i class="fas fa-box"></i> Orders</li>
+      </ul>
+
+      <button class="logout-btn" onclick="logout()">Logout</button>
+    </div>
+
+    <div class="overlay" id="overlay" onclick="closeSidebar()"></div>
+
+    <!-- HERO SECTION -->
+    <section class="hero">
+      <div class="hero-content">
+        <h1>
+          Upgrade Your <span>Style</span><br />
+          With <strong>V<span>E</span>ZZ<span>O</span></strong>
+        </h1>
+        <p>
+          Discover premium fashion, electronics & lifestyle products crafted
+          just for you.
+        </p>
+        <div class="hero-buttons">
+          <a href="./login.html" class="btn-primary">Shop Now</a>
+          <a href="./login.html" class="btn-secondary">Explore</a>
+        </div>
+      </div>
+      
+    </section>
+
+    <!-- CATEGORY SECTION -->
+    <section class="category-section">
+      <h2>Shop by Category</h2>
+      <div class="category-grid">
+        <div class="category-card">
+          <img src="https://images.unsplash.com/photo-1521335629791-ce4aec67dd47" alt="Men Fashion" />
+          <div class="category-overlay">
+            <h3>Men</h3>
+            <p>Latest menswear</p>
+          </div>
+        </div>
+
+        <div class="category-card">
+          <img src="https://images.unsplash.com/photo-1520975916090-3105956dac38" alt="Women Fashion" />
+          <div class="category-overlay">
+            <h3>Women</h3>
+            <p>Trending styles</p>
+          </div>
+        </div>
+
+        <div class="category-card">
+          <img src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9" alt="Electronics" />
+          <div class="category-overlay">
+            <h3>Electronics</h3>
+            <p>Smart gadgets</p>
+          </div>
+        </div>
+
+        <div class="category-card">
+          <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30" alt="Accessories" />
+          <div class="category-overlay">
+            <h3>Accessories</h3>
+            <p>Complete your look</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FEATURED PRODUCTS -->
+    <section class="products">
+      <h2>Featured Products</h2>
+      <div class="product-grid">
+        <div class="product-card">
+          <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff" />
+          <h4>Sneakers</h4>
+          <p>₹2,499</p>
+          <button onclick="goProtected('cart.html')">Add to Cart</button>
+        </div>
+
+        <div class="product-card">
+          <img src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9" />
+          <h4>Smartphone</h4>
+          <p>₹14,999</p>
+          <button onclick="goProtected('cart.html')">Add to Cart</button>
+        </div>
+
+        <div class="product-card">
+          <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e" />
+          <h4>Headphones</h4>
+          <p>₹1,999</p>
+          <button onclick="goProtected('cart.html')">Add to Cart</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+      <div class="footer-container">
+        <div class="footer-box">
+          <h2 class="footer-logo">V<span>E</span>ZZ<span>O</span></h2>
+          <p>
+            VEZZO is your one-stop destination for fashion, lifestyle, and
+            everyday essentials at the best prices.
+          </p>
+        </div>
+
+        <div class="footer-box">
+          <h3>Quick Links</h3>
+          <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Shop</a></li>
+            <li><a href="#">Categories</a></li>
+            <li><a href="#">Deals</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-box">
+          <h3>Support</h3>
+          <ul>
+            <li><a href="#">Help Center</a></li>
+            <li><a href="#">Returns</a></li>
+            <li><a href="#">Order Status</a></li>
+            <li><a href="#">Privacy Policy</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-box">
+          <h3>Follow Us</h3>
+          <div class="social-icons">
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2026 VEZZO. All Rights Reserved.</p>
+      </div>
+    </footer>
+
+    <script src="./JS/index.js"></script>
+    <script src="./JS/auth.js"></script>
   </body>
-  <script src="./JS/index.js"></script>
 </html>
